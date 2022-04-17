@@ -1,13 +1,16 @@
 // Given two strings, write a function to determine if the second string is an anagram of the first. 
 // An anagram is a word, phrase or name formed by rearraning the letters of another, such as cinema, formed from iceman.
 
-//Examples;
+//Examples:
 /*
     vaildAnagram(" ", " "); => true;
     validAnagram("aaz", "zza") => false;
     validAnagram("anagram", "nagaram") => true;
     validAnagram("rat", "car"); => false;
 */
+
+// NOTE: the string contains only lowercase letters
+// Time Complexity: O(n)
 
 
 function vaildAnagram(str1, str2) {
@@ -34,10 +37,13 @@ function vaildAnagram(str1, str2) {
 
     // check each char of str2 if it is in the obj
     for(let char of str2) {
-    
+        
         if(!charAndAmountStr1[char]){
             //anagram is not possible when no key in object exists
             return false;
+        } else {
+            // decrease the amount from the char in obj
+            charAndAmountStr1[char] -= 1;
         }
     }
     return true;
